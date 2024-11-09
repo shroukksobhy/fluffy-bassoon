@@ -4,6 +4,10 @@ import localFont from 'next/font/local'
 import './globals.css'
 import Header from '../components/Header'
 import { UserProvider } from '@/components/context/UserContext'
+import { I18nextProvider } from 'react-i18next'
+import i18n from '../../i18n'
+import { useEffect } from 'react'
+//  import { applyRTL } from './rtlUtils
 // const geistSans = localFont({
 //   src: './fonts/GeistVF.woff',
 //   variable: '--font-geist-sans',
@@ -27,12 +31,14 @@ export default function RootLayout ({
 }>) {
   return (
     <UserProvider>
-      <html lang='en'>
-        <body>
-          <Header />
-          {children}
-        </body>
-      </html>
+      <I18nextProvider i18n={i18n}>
+        <html lang='ar' dir='rtl'>
+          <body>
+            <Header />
+            {children}
+          </body>
+        </html>
+      </I18nextProvider>
     </UserProvider>
   )
 }

@@ -12,6 +12,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import CustomTextField from '@/components/(DashboardLayout)/components/forms/theme-elements/CustomTextField'
 import { useUser } from '@/components/context/UserContext'
+import { useTranslation } from 'react-i18next'
+
 interface loginType {
   title?: string
   subtitle?: JSX.Element | JSX.Element[]
@@ -25,6 +27,7 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
   const [loading, setLoading] = useState(false)
   const router = useRouter() // Initialize the router
   const { setUser } = useUser() // Access setUser from context
+  const { t } = useTranslation() // Language
   function handleChangeEmail (e: React.ChangeEvent<HTMLInputElement>) {
     setMessage('')
     setEmail(e.target.value)
@@ -92,7 +95,7 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
               htmlFor='username'
               mb='5px'
             >
-              Username
+              {t('login.username')}
             </Typography>
             <CustomTextField
               variant='outlined'
@@ -110,7 +113,7 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
               htmlFor='password'
               mb='5px'
             >
-              Password
+              {t('login.password')}
             </Typography>
             <CustomTextField
               type='password'

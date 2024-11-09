@@ -4,8 +4,11 @@ import { Grid, Box, Card, Stack, Typography } from '@mui/material'
 // components
 import PageContainer from '@/components/(DashboardLayout)/components/container/PageContainer'
 import AuthLogin from '@/components/authentication/auth/AuthLogin'
+import { useTranslation } from 'react-i18next'
 
 const Login = () => {
+  const { t } = useTranslation() // Language
+
   return (
     // <PageContainer title='Login' description='this is Login page'>
     <Box
@@ -54,7 +57,7 @@ const Login = () => {
                   color='textSecondary'
                   mb={1}
                 >
-                  Login
+                  {t('header.login')}
                 </Typography>
               }
               subtitle={

@@ -1,0 +1,15 @@
+{
+    "header": {
+        "title": "Coursera",
+        "welcome": "Welcome, {{name}}",
+        "profile": "Profile",
+        "logout": "Logout",
+        "login": "Login",
+        "signup": "Sign Up"
+    },
+    "login": {
+        "username": "Username",
+        "email": "Email",
+        "password": "Password"
+    }
+}

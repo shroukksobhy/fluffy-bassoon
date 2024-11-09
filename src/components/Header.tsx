@@ -10,15 +10,15 @@ import MenuIcon from '@mui/icons-material/Menu'
 import Link from 'next/link'
 import { useUser } from '@/components/context/UserContext'
 import { useRouter } from 'next/navigation'
-
+import { useTranslation } from 'react-i18next'
 export default function Header () {
   const { user, logout } = useUser()
   const router = useRouter() // Initialize the router
-
+  const { t } = useTranslation()
   console.log(user)
   const handleLogout = () => {
     logout()
-    router.push('/aulogin')
+    router.push('/auth/login')
   }
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -29,32 +29,33 @@ export default function Header () {
             edge='start'
             color='inherit'
             aria-label='menu'
-            sx={{ mr: 2 }}
+            sx={{ ml: 2 }}
           >
             <MenuIcon />
           </IconButton>
           <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-            Coursera
+            {t('header.title')}
           </Typography>
 
           {user ? (
             <>
-              <span>Welcome, {user.name}</span>{' '}
+              {/* <span>Welcome, {user.name}</span>{' '} */}
               <Link href={'/profile'}>
-                <Button color='inherit'>Profile</Button>
+                <Button color='inherit'>{t('header.profile')}</Button>
               </Link>
               {/* <Link href={'/logout'}>Logout</Link> */}
               <Button color='inherit' onClick={handleLogout}>
-                Logout
+                {t('header.logout')}
               </Button>
+              <span>{t('header.welcome', { name: user.name })}</span>{' '}
             </>
           ) : (
             <>
               <Link href={'/auth/login'}>
-                <Button color='inherit'>Login</Button>
+                <Button color='inherit'>{t('header.login')}</Button>
               </Link>
               <Link href={'/auth/register'}>
-                <Button color='inherit'>Sign Up</Button>
+                <Button color='inherit'>{t('header.signup')}</Button>
               </Link>
             </>
           )}
