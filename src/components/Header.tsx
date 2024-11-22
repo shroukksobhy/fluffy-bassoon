@@ -15,7 +15,7 @@ export default function Header () {
   const { user, logout } = useUser()
   const router = useRouter() // Initialize the router
   const { t } = useTranslation()
-  console.log(user)
+  // console.log(user)
   const handleLogout = () => {
     logout()
     router.push('/auth/login')
@@ -33,15 +33,19 @@ export default function Header () {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-            {t('header.title')}
-          </Typography>
-
+          <Link href={'/'}>
+            <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
+              {t('header.title')}
+            </Typography>
+          </Link>
           {user ? (
             <>
               {/* <span>Welcome, {user.name}</span>{' '} */}
               <Link href={'/profile'}>
                 <Button color='inherit'>{t('header.profile')}</Button>
+              </Link>
+              <Link href={'/courses'}>
+                <Button color='inherit'>{t('header.courses')}</Button>
               </Link>
               {/* <Link href={'/logout'}>Logout</Link> */}
               <Button color='inherit' onClick={handleLogout}>
@@ -59,15 +63,6 @@ export default function Header () {
               </Link>
             </>
           )}
-
-          {/* <Link href='/auth/login' passHref>
-            {' '}
-            <Button color='inherit'>Login</Button>{' '}
-          </Link>
-          <Link href='/auth/register' passHref>
-            {' '}
-            <Button color='inherit'>Register</Button>{' '}
-          </Link> */}
         </Toolbar>
       </AppBar>
     </Box>

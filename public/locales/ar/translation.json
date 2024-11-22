@@ -5,11 +5,26 @@
         "profile": "الملف الشخصي",
         "logout": "تسجيل الخروج",
         "login": "تسجيل الدخول",
-        "signup": "التسجيل"
+        "signup": "التسجيل",
+        "courses": "دورات تدريبية"
     },
-    "login": {
-        "username": "اسم المستخدم",
+    "form": {
+        "username": "الاسم بالكامل",
         "email": "الايميل الالكتروني",
-        "password": "الرقم السري"
+        "password": "الرقم السري",
+        "login": "تسجيل الدخول",
+        "signup": "التسجيل",
+        "createAccount": "إنشاء حساب",
+        "forgot_password": "نسيت كلمة المرور؟",
+        "remember_device": "تذكر هذا الجهاز"
+    },
+    "learn_more": "استكشف المزيد",
+    "full_name": "الاسم الكامل",
+    "email": "عنوان البريد الإلكتروني",
+    "submit": "حفظ",
+    "language": "لغة",
+    "lang": {
+        "ar": "لغة عربية",
+        "en": "English"
     }
 }

@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { Box, Typography, Button } from '@mui/material'
 import Link from 'next/link'
-
 import CustomTextField from '@/components/(DashboardLayout)/components/forms/theme-elements/CustomTextField'
 import { Stack } from '@mui/system'
 import { TextField } from '@mui/material'
 import { useUser } from '@/components/context/UserContext'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 interface registerType {
   title?: string
@@ -25,6 +25,7 @@ const AuthRegister = ({ title, subtitle, subtext }: registerType) => {
   const [loading, setLoading] = useState(false)
   const { setUser } = useUser() // Access setUser from context
   const router = useRouter() // Initialize the router
+  const { t } = useTranslation() // Language
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMessage('')
@@ -32,10 +33,8 @@ const AuthRegister = ({ title, subtitle, subtext }: registerType) => {
     setFormData({ ...formData, [name]: value })
   }
   const handleSubmit = async (e: React.FormEvent) => {
-    console.log('This is log')
     e.preventDefault()
     setLoading(true)
-    console.log(formData)
     try {
       const response = await fetch('http://127.0.0.1:8000/api/auth/register', {
         method: 'POST',
@@ -54,6 +53,7 @@ const AuthRegister = ({ title, subtitle, subtext }: registerType) => {
         setMessage(`Registration failed: ${data}`)
       }
     } catch (error) {
+      setLoading(false)
       setMessage(`Error: ${error.message}`)
     }
   }
@@ -79,7 +79,7 @@ const AuthRegister = ({ title, subtitle, subtext }: registerType) => {
                 htmlFor='username'
                 mb='5px'
               >
-                Username
+                {t('form.username')}
               </Typography>
               <CustomTextField
                 variant='outlined'
@@ -97,7 +97,7 @@ const AuthRegister = ({ title, subtitle, subtext }: registerType) => {
                 htmlFor='email'
                 mb='5px'
               >
-                Email
+                {t('form.email')}
               </Typography>
               <CustomTextField
                 variant='outlined'
@@ -116,7 +116,7 @@ const AuthRegister = ({ title, subtitle, subtext }: registerType) => {
                 htmlFor='password'
                 mb='5px'
               >
-                Password
+                {t('form.password')}
               </Typography>
               <CustomTextField
                 type='password'

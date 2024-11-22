@@ -7,6 +7,7 @@ import { UserProvider } from '@/components/context/UserContext'
 import { I18nextProvider } from 'react-i18next'
 import i18n from '../../i18n'
 import { useEffect } from 'react'
+import Box from '@mui/material/Box'
 //  import { applyRTL } from './rtlUtils
 // const geistSans = localFont({
 //   src: './fonts/GeistVF.woff',
@@ -35,7 +36,7 @@ export default function RootLayout ({
         <html lang='ar' dir='rtl'>
           <body>
             <Header />
-            {children}
+            <Box mt={5}>{children}</Box>
           </body>
         </html>
       </I18nextProvider>

@@ -67,13 +67,13 @@ const Login = () => {
                   justifyContent='center'
                   mt={3}
                 >
-                  <Typography
+                  {/* <Typography
                     color='textSecondary'
                     variant='h6'
                     fontWeight='500'
                   >
                     New to Course Platform?
-                  </Typography>
+                  </Typography> */}
                   <Typography
                     fontWeight='500'
                     sx={{
@@ -81,7 +81,7 @@ const Login = () => {
                       color: 'primary.main'
                     }}
                   >
-                    Create an account
+                    {t('form.createAccount')}
                   </Typography>
                 </Stack>
               }

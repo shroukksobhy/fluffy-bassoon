@@ -7,9 +7,12 @@
         "login": "Login",
         "signup": "Sign Up"
     },
-    "login": {
+    "form": {
         "username": "Username",
         "email": "Email",
-        "password": "Password"
+        "password": "Password",
+        "createAccount": "Create an account",
+        "forgot_password": "Forgot Password ?",
+        "remember_device": "Remeber this Device"
     }
 }

@@ -35,7 +35,6 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
 
   function handleChangePassword (e: React.ChangeEvent<HTMLInputElement>) {
     setMessage('')
-
     setPassword(e.target.value)
   }
   const handleSubmit = async (e: React.FormEvent) => {
@@ -47,7 +46,6 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
       })
-
       const data = await response.json()
       if (response.ok) {
         setLoading(false)
@@ -55,15 +53,15 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
         console.log(data.user)
         setUser(data.user) // Set the user data in context
         localStorage.setItem('user', JSON.stringify(data.user))
-        const storedUser = localStorage.getItem('user')
-        if (storedUser) {
-          try {
-            const userObj = JSON.parse(storedUser)
-            console.log(userObj)
-          } catch (error) {
-            console.error('Error parsing JSON:', error)
-          }
-        }
+        // const storedUser = localStorage.getItem('user')
+        // if (storedUser) {
+        //   try {
+        //     const userObj = JSON.parse(storedUser)
+        //     console.log(userObj)
+        //   } catch (error) {
+        //     console.error('Error parsing JSON:', error)
+        //   }
+        // }
         router.push('/')
       } else {
         setLoading(false)
@@ -95,7 +93,7 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
               htmlFor='username'
               mb='5px'
             >
-              {t('login.username')}
+              {t('form.username')}
             </Typography>
             <CustomTextField
               variant='outlined'
@@ -113,7 +111,7 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
               htmlFor='password'
               mb='5px'
             >
-              {t('login.password')}
+              {t('form.password')}
             </Typography>
             <CustomTextField
               type='password'
@@ -142,7 +140,7 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
             <FormGroup>
               <FormControlLabel
                 control={<Checkbox defaultChecked />}
-                label='Remeber this Device'
+                label={t('form.remember_device')}
               />
             </FormGroup>
             <Typography
@@ -154,7 +152,7 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
                 color: 'primary.main'
               }}
             >
-              Forgot Password ?
+              {t('form.forgot_password')}
             </Typography>
           </Stack>
         </Stack>
