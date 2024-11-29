@@ -47,6 +47,9 @@ export default function Header () {
               <Link href={'/courses'}>
                 <Button color='inherit'>{t('header.courses')}</Button>
               </Link>
+              <Link href={'/my-courses'}>
+                <Button color='inherit'>{t('header.myCourses')}</Button>
+              </Link>
               {/* <Link href={'/logout'}>Logout</Link> */}
               <Button color='inherit' onClick={handleLogout}>
                 {t('header.logout')}

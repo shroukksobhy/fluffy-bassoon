@@ -1,15 +1,15 @@
-import { useRouter } from 'next/router'
+'use client'
 
 function CoursePage () {
-  const router = useRouter()
-  const { id } = router.query
+  // const router = useRouter()
+  // const { id } = router.query
 
   // Fetch data for the specific course based on the ID
   // ...
 
   return (
     <div>
-      <h1>Course ID: {id}</h1>
+      <h1>Course ID: 2</h1>
       {/* Render course details here */}
     </div>
   )
