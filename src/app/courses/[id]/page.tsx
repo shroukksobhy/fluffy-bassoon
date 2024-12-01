@@ -1,45 +1,47 @@
-// 'use client'
+'use client'
 
-// import { useRouter, usePathname } from 'next/navigation'
-// import { Container } from '@mui/material'
+// import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
+import { Container, Typography, Box, Button } from '@mui/material'
+import { useRouter, usePathname } from 'next/navigation'
+import { fetchCourseInfo } from '@/utils/api'
+import { useTranslation } from 'react-i18next'
 
-// const CourseDetail = () => {
-//   const pathname = usePathname()
-//   const id = pathname.split('/').pop()
+export default function CourseDetails () {
+  const [course, setCourse] = useState(null)
+  const pathname = usePathname()
+  const id = pathname.split('/').pop()
+  const { t } = useTranslation() // Language
 
-//   return (
-//     <Container>
-//       <h1> {id} تدريب </h1>
-//       <p> {id}شرح محتوي كورس.</p>
-//     </Container>
-//   )
-// }
+  useEffect(() => {
+    const loadCourseData = async () => {
+      const response = await fetchCourseInfo(id)
+      console.log(response)
+      setCourse(response.course)
+    }
+    // if (id) {
+    loadCourseData()
+    // }
+  }, [])
+  if (!course) {
+    return <div>Loading...</div>
+  }
 
-// export default CourseDetail
-
-import { useRouter } from 'next/router';
-
-export async function getStaticProps(context) {
-  const { id } = context.params;
-
-  const res = await fetch(`https://api.example.com/courses/${id}`);
-  const courseData = await res.json();
-
-  return {
-    props: {
-      courseData,
-    },
-  };
-}
-
-const CourseDetail = ({ courseData }) => {
   return (
     <Container>
-      <h1>{courseData.title}</h1>
-      <p>{courseData.description}</p>
-      {/* ... other course details ... */}
+      <Box pt={5}>
+        <Typography variant='h3' gutterBottom>
+          {course.title}
+        </Typography>
+        <p>{course.description}</p>
+        <Typography variant='subtitle1' gutterBottom>
+          {course.instructor?.name}
+        </Typography>
+        <Button variant='contained' color='primary' size='large' fullWidth>
+          {t('enroll')}
+        </Button>
+      </Box>
+      {/* ...other course details */}
     </Container>
-  );
-};
-
-export default CourseDetail;
+  )
+}
